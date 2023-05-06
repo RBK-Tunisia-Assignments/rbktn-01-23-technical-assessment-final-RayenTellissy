@@ -29,8 +29,8 @@ const RecepieCard = ({id,recepie_Image,recepie_Name,Cook_Time,Prep_Time,Serves,f
             </div>
             <div className="text">
               <h1 className="food">{recepie_Name}</h1>
-              <i> {Cook_Time}</i> <br />
-              <i> {Prep_Time}</i> <br />
+              <i> Cook Time: {Cook_Time}</i> <br />
+              <i> Prep Time: {Prep_Time}</i> <br />
               <i> Serves: {Serves} </i>
             </div>
           </>

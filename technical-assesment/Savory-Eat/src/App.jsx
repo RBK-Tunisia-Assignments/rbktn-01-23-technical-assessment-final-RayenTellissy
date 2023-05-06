@@ -11,9 +11,14 @@ function App() {
 const [view,setView]=useState('Home')
 const [data,setData]=useState([])
 const [clicked,setClicked]=useState({})
+const [query,setQuery]=useState("")
 
 const fetchData=()=>{
   axios.get("http://localhost:4000/api/menuItems").then(res=>setData(res.data))
+}
+
+const handleSearch=()=>{
+  axios.get(`http://localhost:4000/api/recepies/search?query=${query}`).then(res=>setData(res.data))
 }
 
 useEffect(()=>{
@@ -55,8 +60,8 @@ const click=(value)=>{
           Addrecepie
         </div>
         <div className="nav-item" active-color="red">
-          <input type="text"  />
-          <button>search</button>
+          <input type="text" onChange={e=>setQuery(e.target.value)}/>
+          <button onClick={handleSearch}>search</button>
         </div>
         <span className="nav-indicator"></span>
       </nav>

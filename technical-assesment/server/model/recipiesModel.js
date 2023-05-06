@@ -30,4 +30,19 @@ const update=(callback,cook,prep,name,serves,category,image,description,ingredie
   })
 }
 
-module.exports = { getAll, add, remove, update };
+const search=(callback,query)=>{
+  if(isNaN(query)){
+    const sql=`select * from recepie where recepie_Ingredients="${query}"`
+    connection.query(sql,function(err,results){
+      callback(err,results)
+    })
+  }
+  else{
+    const sql=`select * from recepie where Cook_Time=${query}`
+    connection.query(sql,function(err,results){
+      callback(err,results)
+    })
+  }
+}
+
+module.exports = { getAll, add, remove, update,search };
