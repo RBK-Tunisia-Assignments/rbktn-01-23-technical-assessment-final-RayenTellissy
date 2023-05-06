@@ -1,8 +1,13 @@
 const express = require("express");
+const cors=require("cors")
 const app = express();
+const recipiesRoute=require("./routes/recipiesRoute")
 const PORT = 4000;
 
-// TODO - add additional route handlers as necessary
+app.use(express.json())
+app.use(cors())
+app.use("/api/menuItems", recipiesRoute)
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });

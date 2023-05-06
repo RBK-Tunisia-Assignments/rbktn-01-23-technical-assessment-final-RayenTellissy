@@ -1,8 +1,7 @@
 import React from "react";
 import "../index.scss";
-import data from "../data/data.json"
 
-const AllRecepies = () => {
+const AllRecepies = ({data}) => {
   return (
     <div className="card-container">
     {data.map((e,index)=>{
