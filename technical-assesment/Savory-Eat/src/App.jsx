@@ -5,9 +5,11 @@ import Home from "./components/Home.jsx";
 import AllRecepies from "./components/AllRecipies.jsx"
 function App() {
 const [view,setView]=useState('Home')
+
   let changeView = (view) => {
     setView(view);
   };
+  
   return (
     <div className="App">
       <nav className="nav">
