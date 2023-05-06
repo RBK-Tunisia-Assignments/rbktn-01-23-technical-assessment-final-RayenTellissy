@@ -23,4 +23,11 @@ const remove=(callback,id)=>{
   })
 }
 
-module.exports = { getAll, add, remove };
+const update=(callback,cook,prep,name,serves,category,image,description,ingredients,id)=>{
+  const sql=`update recepie set Cook_Time=${cook}, Prep_Time=${prep},recepie_Name="${name}",Serves=${serves},categorie="${category}",recepie_Image="${image}",recepie_Description="${description}",recepie_Ingredients="${ingredients}" where recepie_Id=${id}`
+  connection.query(sql,function(err,results){
+    callback(err,results)
+  })
+}
+
+module.exports = { getAll, add, remove, update };

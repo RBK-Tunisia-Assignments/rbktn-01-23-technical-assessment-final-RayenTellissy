@@ -2,11 +2,11 @@ import React from "react";
 import "../index.scss";
 import RecepieCard from "./RecepieCard";
 
-const AllRecepies = ({data,fetchData}) => {
+const AllRecepies = ({data,fetchData,changeView,click}) => {
   return (
     <div className="card-container">
     {data.map((e,index)=>{
-        return <RecepieCard key={index} id={e.recepie_Id} recepie_Image={e.recepie_Image} recepie_Name={e.recepie_Name} Cook_Time={e.Cook_Time} Prep_Time={e.Prep_Time} Serves={e.Serves} fetchData={fetchData}/>
+        return <RecepieCard key={index} id={e.recepie_Id} recepie_Image={e.recepie_Image} recepie_Name={e.recepie_Name} Cook_Time={e.Cook_Time} Prep_Time={e.Prep_Time} Serves={e.Serves} fetchData={fetchData} changeView={changeView} click={()=>click(e)}/>
     })}
     </div>
   );

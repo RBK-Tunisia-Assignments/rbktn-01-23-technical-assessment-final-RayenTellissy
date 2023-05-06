@@ -5,10 +5,12 @@ import Home from "./components/Home.jsx";
 import AllRecepies from "./components/AllRecipies.jsx"
 import axios from "axios"
 import Add from "./components/Add";
+import Edit from "./components/Edit";
 
 function App() {
 const [view,setView]=useState('Home')
 const [data,setData]=useState([])
+const [clicked,setClicked]=useState({})
 
 const fetchData=()=>{
   axios.get("http://localhost:4000/api/menuItems").then(res=>setData(res.data))
@@ -18,9 +20,14 @@ useEffect(()=>{
   fetchData()
 },[])
 
+const click=(value)=>{
+  setClicked(value)
+}
+
   let changeView = (view) => {
     setView(view);
   };
+
 
   return (
     <div className="App">
@@ -54,8 +61,9 @@ useEffect(()=>{
         <span className="nav-indicator"></span>
       </nav>
       {view === "Home" && <Home changeView={changeView}/>}
-      {view === "Allrecepies" && <AllRecepies data={data} fetchData={fetchData}/>}
+      {view === "Allrecepies" && <AllRecepies data={data} fetchData={fetchData} changeView={changeView} click={click}/>}
       {view === "Addrecepie" && <Add/>}
+      {view === "Editrecepie" && <Edit food={clicked} fetchData={fetchData} changeView={changeView}/>}
      
       <div></div>
     </div>

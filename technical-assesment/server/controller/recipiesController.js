@@ -1,4 +1,4 @@
-const { getAll, add, remove }=require("../model/recipiesModel")
+const { getAll, add, remove, update }=require("../model/recipiesModel")
 
 const getrecepie = (req, res) => {
   getAll(function(err,results){
@@ -35,6 +35,19 @@ const deleterecepie=(req,res)=>{
   },id)
 }
 
+const updaterecepie=(req,res)=>{
+  const {id}=req.params
+  const { Cook_Time, Prep_Time, recepie_Name, Serves, categorie, recepie_Image, recepie_Description, recepie_Ingredients}=req.body
+  update(function(err,results){
+    if(err){
+      res.send(err)
+    }
+    else{
+      res.send(results)
+    }
+  },Cook_Time,Prep_Time,recepie_Name,Serves,categorie,recepie_Image,recepie_Description,recepie_Ingredients,id)
+}
+
 module.exports = {
-  getrecepie, addrecepie, deleterecepie
+  getrecepie, addrecepie, deleterecepie,updaterecepie
 };

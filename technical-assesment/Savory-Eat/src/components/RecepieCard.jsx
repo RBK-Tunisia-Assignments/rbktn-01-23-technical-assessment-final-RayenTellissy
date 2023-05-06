@@ -2,17 +2,22 @@ import React from "react";
 import "../App.css";
 import axios from "axios"
 
-const RecepieCard = ({id,recepie_Image,recepie_Name,Cook_Time,Prep_Time,Serves,fetchData}) => {
+const RecepieCard = ({id,recepie_Image,recepie_Name,Cook_Time,Prep_Time,Serves,fetchData,changeView,click}) => {
 
   const handleDelete=()=>{
     axios.delete(`http://localhost:4000/api/recepies/${id}`).then(fetchData)
+  }
+
+  const handleUpdate=()=>{
+    click()
+    changeView("Editrecepie")
   }
 
   return (
     <>
       <div className="card">
           <button className="delete" onClick={handleDelete}>delete</button>
-          <button className="update">update </button>
+          <button className="update" onClick={handleUpdate}>update </button>
 
           <>
             <div className="header">
