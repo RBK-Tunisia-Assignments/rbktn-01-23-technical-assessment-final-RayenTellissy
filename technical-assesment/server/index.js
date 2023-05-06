@@ -6,7 +6,8 @@ const PORT = 4000;
 
 app.use(express.json())
 app.use(cors())
-app.use("/api/menuItems", recipiesRoute)
+
+app.use("/", recipiesRoute)
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

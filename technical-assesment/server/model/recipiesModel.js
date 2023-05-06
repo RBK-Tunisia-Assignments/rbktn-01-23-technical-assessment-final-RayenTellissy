@@ -9,4 +9,11 @@ const getAll = (callback) => {
   })
 };
 
-module.exports = { getAll };
+const add=(callback,cook,prep,name,serves,category,image,description,ingredients,userid)=>{
+  const sql=`insert into recepie (Cook_Time,Prep_Time,recepie_Name,Serves,categorie,recepie_Image,recepie_Description,recepie_Ingredients,users_user_Id) values(${cook},${prep},"${name}",${serves},"${category}","${image}","${description}","${ingredients}",${userid})`
+  connection.query(sql,function(err,results){
+    callback(err,results)
+  })
+}
+
+module.exports = { getAll, add };

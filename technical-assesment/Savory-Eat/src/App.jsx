@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./components/Home.jsx";
 import AllRecepies from "./components/AllRecipies.jsx"
 import axios from "axios"
+import Add from "./components/Add";
 
 function App() {
 const [view,setView]=useState('Home')
@@ -50,6 +51,7 @@ useEffect(()=>{
       </nav>
       {view === "Home" && <Home changeView={changeView}/>}
       {view === "Allrecepies" && <AllRecepies data={data}/>}
+      {view === "Addrecepie" && <Add/>}
      
       <div></div>
     </div>

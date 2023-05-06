@@ -21,6 +21,7 @@ const AllRecepies = ({data}) => {
             <div className="text">
               <h1 className="food">{e.recepie_Name}</h1>
               <i> {e.Cook_Time}</i> <br />
+              <i> {e.Prep_Time}</i> <br />
               <i> Serves: {e.Serves} </i>
             </div>
           </>
