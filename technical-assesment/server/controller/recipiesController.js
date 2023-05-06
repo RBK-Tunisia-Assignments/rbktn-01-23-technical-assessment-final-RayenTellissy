@@ -1,4 +1,4 @@
-const { getAll, add, remove, update, search }=require("../model/recipiesModel")
+const { getAll, add, remove, update, search, favorite, removefavorite, getAllFavorites, getOneRec }=require("../model/recipiesModel")
 
 const getrecepie = (req, res) => {
   getAll(function(err,results){
@@ -61,6 +61,55 @@ const searchrecepie=(req,res)=>{
   },query)
 }
 
+const favoriterecepie=(req,res)=>{
+  const userid=req.params.userid
+  const recid=req.params.recid
+  favorite(function(err,results){
+    if(err){
+      res.send(err)
+    }
+    else{
+      res.send(results)
+    }
+  },userid,recid)
+}
+
+const deletefavorite=(req,res)=>{
+  const { userid, recid }=req.params
+  removefavorite(function(err,results){
+    if(err){
+      res.send(err)
+    }
+    else{
+      res.send(results)
+    }
+  },userid,recid)
+}
+
+const getfavorites=(req,res)=>{
+  const { userid }=req.params
+  getAllFavorites(function(err,results){
+    if(err){
+      res.send(err)
+    }
+    else{
+      res.send(results)
+    }
+  },userid)
+}
+
+const getOneRecepie=(req,res)=>{
+  const { recid }=req.params
+  getOneRec(function(err,results){
+    if(err){
+      res.send(err)
+    }
+    else{
+      res.send(results)
+    }
+  },recid)
+}
+
 module.exports = {
-  getrecepie, addrecepie, deleterecepie,updaterecepie,searchrecepie
+  getrecepie, addrecepie, deleterecepie, updaterecepie, searchrecepie, favoriterecepie, deletefavorite, getfavorites, getOneRecepie
 };

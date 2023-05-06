@@ -22,7 +22,7 @@ const Add = () => {
       recepie_Image: image,
       recepie_Description: description,
       recepie_Ingredients: ingredients,
-      users_user_Id: 1
+      users_user_Id: 2
     }
 
     axios.post("http://localhost:4000/api/recepies",food)

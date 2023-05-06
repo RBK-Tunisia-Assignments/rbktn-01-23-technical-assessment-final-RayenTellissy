@@ -6,6 +6,7 @@ import AllRecepies from "./components/AllRecipies.jsx"
 import axios from "axios"
 import Add from "./components/Add";
 import Edit from "./components/Edit";
+import Favorites from "./components/Favorites";
 
 function App() {
 const [view,setView]=useState('Home')
@@ -37,6 +38,7 @@ const click=(value)=>{
   return (
     <div className="App">
       <nav className="nav">
+      <div className="nav-item" onClick={()=>changeView("favorites")}>Favorites</div>
         <div
           className="nav-item is-active"
           active-color="orange"
@@ -57,9 +59,9 @@ const click=(value)=>{
           active-color="red"
           onClick={() => setView("Addrecepie")}
         >
-          Addrecepie
+          Add recepie
         </div>
-        <div className="nav-item" active-color="red">
+        <div className="search-bar" active-color="red">
           <input type="text" onChange={e=>setQuery(e.target.value)}/>
           <button onClick={handleSearch}>search</button>
         </div>
@@ -69,6 +71,7 @@ const click=(value)=>{
       {view === "Allrecepies" && <AllRecepies data={data} fetchData={fetchData} changeView={changeView} click={click}/>}
       {view === "Addrecepie" && <Add/>}
       {view === "Editrecepie" && <Edit food={clicked} fetchData={fetchData} changeView={changeView}/>}
+      {view === "favorites" && <Favorites/>}
      
       <div></div>
     </div>

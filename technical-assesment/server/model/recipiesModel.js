@@ -45,4 +45,32 @@ const search=(callback,query)=>{
   }
 }
 
-module.exports = { getAll, add, remove, update,search };
+const favorite=(callback,userid,recid)=>{
+  const sql=`insert into favorites (user_id,recepie_id) values(${userid},${recid})`
+  connection.query(sql,function(err,results){
+    callback(err,results)
+  })
+}
+
+const removefavorite=(callback,userid,recid)=>{
+  const sql=`delete from favorites where user_id=${userid} and recepie_id=${recid}`
+  connection.query(sql,function(err,results){
+    callback(err,results)
+  })
+}
+
+const getAllFavorites=(callback,userid)=>{
+  const sql=`select recepie_id from favorites where user_id=${userid}`
+  connection.query(sql,function(err,results){
+    callback(err,results)
+  })
+}
+
+const getOneRec=(callback,recid)=>{
+  const sql=`select * from recepie where recepie_id=${recid}`
+  connection.query(sql,function(err,results){
+    callback(err,results)
+  })
+}
+
+module.exports = { getAll, add, remove, update, search, favorite, removefavorite, getAllFavorites, getOneRec };

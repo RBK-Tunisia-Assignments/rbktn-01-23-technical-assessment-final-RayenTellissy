@@ -492,7 +492,9 @@ button:hover {
   margin-right: 20px;
 }
 
-.nav-item input {
+.search-bar input {
+  position: absolute;
+  transform: translateX(-600px) translateY(30px);
   width: 200px;
   height: 30px;
   border-radius: 5px;
@@ -501,7 +503,9 @@ button:hover {
   margin-right: 10px;
 }
 
-.nav-item button {
+.search-bar button {
+  position: absolute;
+  transform: translateX(-400px) translateY(30px);
   background-color: #007bff;
   color: #fff;
   border-radius: 5px;
