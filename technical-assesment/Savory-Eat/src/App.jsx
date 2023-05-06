@@ -10,8 +10,12 @@ function App() {
 const [view,setView]=useState('Home')
 const [data,setData]=useState([])
 
-useEffect(()=>{
+const fetchData=()=>{
   axios.get("http://localhost:4000/api/menuItems").then(res=>setData(res.data))
+}
+
+useEffect(()=>{
+  fetchData()
 },[])
 
   let changeView = (view) => {
@@ -50,7 +54,7 @@ useEffect(()=>{
         <span className="nav-indicator"></span>
       </nav>
       {view === "Home" && <Home changeView={changeView}/>}
-      {view === "Allrecepies" && <AllRecepies data={data}/>}
+      {view === "Allrecepies" && <AllRecepies data={data} fetchData={fetchData}/>}
       {view === "Addrecepie" && <Add/>}
      
       <div></div>

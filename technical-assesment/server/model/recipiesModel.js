@@ -16,4 +16,11 @@ const add=(callback,cook,prep,name,serves,category,image,description,ingredients
   })
 }
 
-module.exports = { getAll, add };
+const remove=(callback,id)=>{
+  const sql=`delete from recepie where recepie_Id=${id}`
+  connection.query(sql,function(err,results){
+    callback(err,results)
+  })
+}
+
+module.exports = { getAll, add, remove };
